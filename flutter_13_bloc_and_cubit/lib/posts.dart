@@ -1,3 +1,4 @@
+
 class Posts{
   final int userId;
   final int id;
@@ -6,6 +7,6 @@ class Posts{
 
   Posts(this.userId, this.id, this.title, this.body);
 
-  factory Posts.fromJson(Map<String,dynamic> json) =>
-      Posts(json["userId"],json['id'], json['title'], json['body']);
+
+  factory Posts.fromJson(Map<String,dynamic>json)=>Posts(json['userId'],json['id'],json['title'], json['body']);
 }
