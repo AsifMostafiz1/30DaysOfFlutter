@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_13_bloc_and_cubit/post.dart';
-import 'package:flutter_13_bloc_and_cubit/post_cubit.dart';
+import 'package:flutter_13_bloc_and_cubit/post-cubit.dart';
+import 'package:flutter_13_bloc_and_cubit/posts_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 void main()
 {
@@ -18,7 +17,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BlocProvider<PostCubit>(create: (context)=>PostCubit()..getPost(),child: PostView()),
+
+      home: BlocProvider<PostCubit>(
+          create: (context)=>PostCubit(),child: PostView()),
+
     );
   }
 }
