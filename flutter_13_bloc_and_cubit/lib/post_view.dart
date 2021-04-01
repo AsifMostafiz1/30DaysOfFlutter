@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_13_bloc_and_cubit/post_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,22 +15,37 @@ class PostView extends StatelessWidget {
           centerTitle: true,
         ),
 
-        body: BlocBuilder<PostCubit,List<Posts>>(
-          builder: (context,posts){
-            if(posts.isEmpty)
-            {
+        body: BlocBuilder<PostBloc,PostState>(
+          builder: (context,state){
+            if(state is LoadingPostState) {
               return Center(
                 child: CircularProgressIndicator(),
               );
             }
+            else if(state is LoadedPostState) {
+                return RefreshIndicator(
+                  onRefresh: () async => BlocProvider.of<PostBloc>(context)..add(PullToRefreshEvent()),
+                  child: ListView.builder(
+                    itemCount: state.posts.length,
+                      itemBuilder: (context, index){
+                    return Card(
+                      child: ListTile(
+                        title: Text(state.posts[index].title),
+                      ),
+                    );
+                  }),
+                );
+              }
+            else if(state is FailedToLoadPostState){
+                return Center(
+                  child: Text('Error: ${state.error}'),
+                );
+            }
+            else{
+              return Container();
+            }
 
-            return ListView.builder(itemBuilder: (context,index){
-              return Card(
-                child: ListTile(
-                  title: Text(posts[index].title),
-                ),
-              );
-            });
+
           },
         ),
       ),
