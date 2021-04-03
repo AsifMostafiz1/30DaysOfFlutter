@@ -17,6 +17,9 @@ import 'package:flutter/cupertino.dart';
 class PokemonListing{
   final String name;
   final int id;
+  //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png
+  String get imageUrl => "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/$id.png";
+
    PokemonListing({@required this.name,@required this.id});
 
    factory PokemonListing.fromJson(Map<String,dynamic> json) {
