@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_16_pokemon/pokemon_page_response.dart';
+import 'file:///E:/30DaysOfFlutter/flutter_16_pokemon/flutter_16_pokemon/lib/data/pokemon_page_response.dart';
 
 abstract class PokemonState{
 }

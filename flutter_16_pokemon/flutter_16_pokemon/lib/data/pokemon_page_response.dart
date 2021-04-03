@@ -25,7 +25,6 @@ class PokemonListing{
    factory PokemonListing.fromJson(Map<String,dynamic> json) {
         final name = json['name'];
         final url = json['url'] as String;
-
         final id =  int.parse(url.split('/')[6]);
 
         return PokemonListing(name: name, id: id);
