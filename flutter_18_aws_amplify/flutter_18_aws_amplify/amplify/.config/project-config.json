@@ -1,0 +1,13 @@
+{
+  "projectName": "flutter_18_aws_amplify",
+  "version": "2.0",
+  "frontend": "flutter",
+  "providers": [
+    "awscloudformation"
+  ],
+  "flutter": {
+    "config": {
+      "ResDir": "./lib/"
+    }
+  }
+}
